@@ -17,7 +17,7 @@ header {
 		font-weight: 500;
 	}
 
-	button {
+	.bg-primary {
 		background-color: var(--var-secondary);
 	}
 }
