@@ -17,7 +17,15 @@ header {
 		font-weight: 500;
 	}
 
-	button {
+	.bg-primary {
 		background-color: var(--var-secondary);
 	}
+
+	.bg-primary:hover{
+		background-color: white;
+	}
+	.hover\:bg-green-800:hover {
+		background-color: var(--var-secondary);
+	}
+
 }
