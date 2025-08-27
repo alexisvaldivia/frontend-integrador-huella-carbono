@@ -1,3 +1,23 @@
-@import "tailwindcss";
-@import "tailwindcss/preflight";
-@tailwind utilities;
+:root {
+	--var-primary: #eafdf9;
+	--var-secondary: #01464b;
+	--var-text-font-primary: #353c37;
+	--var-text-font: #525d55;
+}
+
+header {
+	background-color: #eafdf9;
+
+	h1 {
+		color: var(--var-text-font-primary);
+	}
+
+	h2 {
+		color: var(--var-text-font);
+		font-weight: 500;
+	}
+
+	button {
+		background-color: var(--var-secondary);
+	}
+}
