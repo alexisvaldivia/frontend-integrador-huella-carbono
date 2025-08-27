@@ -9,7 +9,9 @@
 		<title>Calculadora Huella de Carbono Personal</title>
 	</head>
 	<body class="h-[100vh]">
-		<header class="flex flex-col items-center gap-5 p-5 pt-15 min-w-11/12 h-6/12">
+		<header
+			class="flex flex-col items-center gap-5 p-5 pt-15 min-w-11/12 h-6/12"
+		>
 			<div class="flex items-center justify-center p-5">
 				<div>
 					<img src="https://placehold.co/150x150" alt="logo" />
@@ -38,7 +40,9 @@
 			</div>
 		</header>
 
-		<section class="relative flex flex-col items-center justify-center p-16 rounded-xl">
+		<section
+			class="relative flex flex-col items-center justify-center p-16 rounded-xl"
+		>
 			<div>
 				<h4 class="block text-xl font-medium text-slate-800">Vehiculo</h4>
 				<p class="font-light text-slate-500">
@@ -63,8 +67,11 @@
 				</div>
 
 				<!-- SELECT -->
-				<div class="flex flex-col gap-2 mb-1">
-					<label for="countries" class="block mb-2 text-sm font-medium text-gray-900">
+				<div class="flex flex-col mb-1">
+					<label
+						for="countries"
+						class="block mb-2 text-sm font-medium text-gray-900"
+					>
 						Seleccione una opción
 					</label>
 					<select
@@ -107,22 +114,26 @@
 					</div>
 				</div>
 
-				<!-- RADIO -->
-				<div class="flex flex-col gap-6 mb-1">
-					<label class="block mb-2 text-sm text-slate-600">
+				<div class="flex flex-col mb-1">
+					<label class="block mb-2 text-sm font-medium text-gray-900">
 						¿Qué tanto viajas en avión?
 					</label>
 					<div class="flex flex-col gap-3">
-						<label class="flex items-center gap-2 text-sm cursor-pointer text-slate-700">
+						<label
+							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+						>
 							<input
 								type="radio"
 								name="avion"
 								value="poco"
 								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
 							/>
-							0 - 50 km
+							No viajo en avion
 						</label>
-						<label class="flex items-center gap-2 text-sm cursor-pointer text-slate-700">
+
+						<label
+							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+						>
 							<input
 								type="radio"
 								name="avion"
@@ -130,6 +141,28 @@
 								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
 							/>
 							500 - 1000 km
+						</label>
+						<label
+							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+						>
+							<input
+								type="radio"
+								name="avion"
+								value="mucho"
+								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+							/>
+							1000 - 2500 km
+						</label>
+						<label
+							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+						>
+							<input
+								type="radio"
+								name="avion"
+								value="poco"
+								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+							/>
+							2500 - 5000 km
 						</label>
 					</div>
 				</div>
