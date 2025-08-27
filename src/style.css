@@ -6,7 +6,7 @@
 }
 
 header {
-	background-color: #eafdf9;
+	background-color: var();
 
 	h1 {
 		color: var(--var-text-font-primary);
