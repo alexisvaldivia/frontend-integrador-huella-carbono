@@ -25,6 +25,7 @@ addEventListener('DOMContentLoaded', () => {
         cantidadKmBicicleta: 0,
         cantidadKmAvion: 0
     }
+
     const respuestasConsumo = {
         gastoRopa: 0,
         segundaMano: null,
@@ -66,5 +67,56 @@ addEventListener('DOMContentLoaded', () => {
     }
     )
 
+    const formularioConsumo = $('formulario-consumo');
 
+    formularioVehiculo.addEventListener('submit', (e) => {
+        e.preventDefault()
+        respuestasConsumoVehiculo.cantidadKmAutoPorSemana = Number(formularioVehiculo.elements['cantidad-km-auto'].value);
+        respuestasConsumoVehiculo.tipoCombustible = formularioVehiculo.elements['tipo-de-combustible'].value;
+        respuestasConsumoVehiculo.cantidadKmColectivo = Number(formularioVehiculo.elements['cantidad-km-colectivo'].value);
+        respuestasConsumoVehiculo.cantidadKmBicicleta = Number(formularioVehiculo.elements['cantidad-km-bicleta'].value);
+
+        let avion = $$("input[name = 'avion']:checked").value;
+
+        switch (avion) {
+            case 'no-viajo':
+                respuestasConsumoVehiculo.cantidadKmAvion = viajesAvion.noViajo;
+                break;
+            case 'poco':
+                respuestasConsumoVehiculo.cantidadKmAvion = viajesAvion.de500a1000;
+                break;
+            case 'medio':
+                respuestasConsumoVehiculo.cantidadKmAvion = viajesAvion.de1000a2500;
+                break;
+            case 'alto':
+                respuestasConsumoVehiculo.cantidadKmAvion = viajesAvion.de2500a5000;
+                break;
+            default:
+                alert('Valor de vuelos no aceptado');
+        }
+
+        console.log(respuestasConsumoVehiculo);
+    }
+    )
+
+    formularioConsumo.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Guardar respuestas
+        respuestasConsumo.gastoRopa = Number(formularioConsumo.elements['gasto-ropa'].value);
+        respuestasConsumo.segundaMano = formularioConsumo.elements['segunda-mano'].value;
+
+        let reciclaSeleccion = $$("input[name='recicla']:checked");
+        if (reciclaSeleccion) {
+            respuestasConsumo.recicla = reciclaSeleccion.value;
+        } else {
+            alert("Por favor selecciona una opción de reciclaje");
+            return;
+        }
+
+        respuestasConsumo.cantidadDispositivos = Number(formularioConsumo.elements['cantidad-dispositivos'].value);
+        respuestasConsumo.renovacionDispositivos = formularioConsumo.elements['renovacion-dispositivos'].value;
+
+        console.log(respuestasConsumo);
+    })
 })

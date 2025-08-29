@@ -51,7 +51,6 @@
 				</p>
 			</div>
 
-			<!-- Formulario Transporte -->
 			<form
 				class="flex flex-col max-w-screen-lg gap-5 mt-8 mb-2 w-80 sm:w-96"
 				id="formulario-vehiculo"
@@ -199,6 +198,128 @@
 					consumo.
 				</p>
 			</div>
+
+			<form
+				class="flex flex-col max-w-screen-lg gap-5 mt-8 mb-2 w-80 sm:w-96"
+				id="formulario-consumo"
+			>
+				<div class="flex flex-col gap-6 mb-1">
+					<div class="w-full max-w-sm min-w-[200px]">
+						<label class="block mb-2 text-sm font-medium text-gray-900">
+							¿Cuánto gastas mensualmente en ropa y productos? (en $)
+						</label>
+						<input
+							type="number"
+							min="0"
+							value="0"
+							required
+							name="gasto-ropa"
+							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+							placeholder="Ej: 15000"
+						/>
+					</div>
+				</div>
+
+				<!-- Pregunta 2 -->
+				<div class="flex flex-col mb-1">
+					<label class="block mb-2 text-sm font-medium text-gray-900">
+						¿Adquieres productos de segunda mano? (Frecuencia)
+					</label>
+					<select
+						name="segunda-mano"
+						class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+					>
+						<option selected>Selecciona una opción</option>
+						<option value="nunca">Nunca</option>
+						<option value="a-veces">A veces</option>
+						<option value="frecuentemente">Frecuentemente</option>
+						<option value="siempre">Siempre</option>
+					</select>
+				</div>
+
+				<div class="flex flex-col mb-1">
+					<label class="block mb-2 text-sm font-medium text-gray-900">
+						¿Reciclas?
+					</label>
+					<div class="flex flex-col gap-3">
+						<label
+							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+						>
+							<input
+								type="radio"
+								name="recicla"
+								value="si"
+								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+							/>
+							Sí
+						</label>
+						<label
+							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+						>
+							<input
+								type="radio"
+								name="recicla"
+								value="no"
+								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+							/>
+							No
+						</label>
+						<label
+							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+						>
+							<input
+								type="radio"
+								name="recicla"
+								value="parcialmente"
+								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+							/>
+							Parcialmente
+						</label>
+					</div>
+				</div>
+
+				<div class="flex flex-col gap-6 mb-1">
+					<div class="w-full max-w-sm min-w-[200px]">
+						<label class="block mb-2 text-sm font-medium text-gray-900">
+							¿Cuántos dispositivos electrónicos posees?
+						</label>
+						<input
+							type="number"
+							min="0"
+							value="0"
+							required
+							name="cantidad-dispositivos"
+							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+							placeholder="Ej: 4"
+						/>
+					</div>
+				</div>
+
+				<div class="flex flex-col mb-1">
+					<label class="block mb-2 text-sm font-medium text-gray-900">
+						¿Cada cuánto los renuevas?
+					</label>
+					<select
+						name="renovacion-dispositivos"
+						class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+					>
+						<option selected>Selecciona una opción</option>
+						<option value="menos-1">Menos de 1 año</option>
+						<option value="1-2">Cada 1-2 años</option>
+						<option value="3-4">Cada 3-4 años</option>
+						<option value="5-mas">Cada 5 años o más</option>
+					</select>
+				</div>
+
+				<button
+					class="w-full px-4 py-2 mt-4 text-sm text-center text-white transition-all border border-transparent rounded-md shadow-md bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					type="submit"
+					id="botonDatosConsumo"
+				>
+					Enviar datos
+				</button>
+			</form>
 		</section>
+
 	</body>
 </html>
