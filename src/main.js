@@ -37,9 +37,17 @@ addEventListener('DOMContentLoaded', () => {
         personasHogar: 1
     }
 
+    const respuestasAlimentacion = {
+        dietaAnimal: null,
+        alimentosLocales: null,
+        gastoAlimentacion: 0,
+        comidasCarne: 0
+    }
+
     const formularioVehiculo = $('formulario-vehiculo');
     const formularioConsumo = $('formulario-consumo');
     const formularioVivienda = $('formulario-vivienda');
+    const formularioAlimentacion = $('formulario-alimentacion')
 
     // Acceso al evento 'submit' de los formularios, y agrego la logica para recolectar los datos, luego los muestro por consola.
 
@@ -107,5 +115,22 @@ addEventListener('DOMContentLoaded', () => {
         console.log(respuestasVivienda);
     });
 
+    formularioAlimentacion.addEventListener('submit', (e) => {
+        e.preventDefault();
 
+        respuestasAlimentacion.dietaAnimal = formularioAlimentacion.elements['dieta-animal'].value;
+
+        let alimentosLocalesSeleccion = $$("input[name='alimentos-locales']:checked");
+        if (alimentosLocalesSeleccion) {
+            respuestasAlimentacion.alimentosLocales = alimentosLocalesSeleccion.value;
+        } else {
+            alert("Por favor selecciona si consumes alimentos locales");
+            return;
+        }
+
+        respuestasAlimentacion.gastoAlimentacion = Number(formularioAlimentacion.elements['gasto-alimentacion'].value);
+        respuestasAlimentacion.comidasCarne = Number(formularioAlimentacion.elements['comidas-carne'].value);
+
+        console.log(respuestasAlimentacion);
+    });
 })
