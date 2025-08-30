@@ -13,7 +13,7 @@ addEventListener('DOMContentLoaded', () => {
     }
 
     const respuestasConsumoVehiculo = {
-        cantidadKmAutoPorSemana: 0,
+        cantidadKmAutoPorDia: 0,
         tipoCombustible: null,
         cantidadKmColectivo: 0,
         cantidadKmBicicleta: 0,
@@ -47,16 +47,53 @@ addEventListener('DOMContentLoaded', () => {
     const formularioVehiculo = $('formulario-vehiculo');
     const formularioConsumo = $('formulario-consumo');
     const formularioVivienda = $('formulario-vivienda');
-    const formularioAlimentacion = $('formulario-alimentacion')
+    const formularioAlimentacion = $('formulario-alimentacion');
+
+    const factoresDeEmisionPromedios = {
+        vehiculo: {
+            nafta: 0.192,
+            gnc: 0.166,
+            diesel: 0.171,
+            electrico: 0.05
+        },
+        colectivo: 0.089,
+        avion: 0.128,
+        bicicleta: 0,
+        electricidad: 0.233,
+        gas: 2.0,
+        ropa: 20,
+        dispositivo: 200,
+        carne: 27,
+        pescado: 6,
+        dietaAnimal: {
+            alto: 3000,
+            medio: 1500,
+            bajo: 500
+        }
+    }
+
+    // Defino las funciones que calculan el total de emisiones en base a los datos
+    function calcularVehiculo() {
+        let total = 0;
+        // Si el tipo de combustible es !null se calcula el total dependiendo el tipo de combustible
+        if (respuestasConsumoVehiculo.tipoCombustible) {
+            total += respuestasConsumoVehiculo.cantidadKmAutoPorDia * factoresDeEmisionPromedios.vehiculo[respuestasConsumoVehiculo.tipoCombustible];
+        }
+        total += respuestasConsumoVehiculo.cantidadKmColectivo * factoresDeEmisionPromedios.colectivo;
+        total += respuestasConsumoVehiculo.cantidadKmBicicleta * factoresDeEmisionPromedios.bicicleta;
+        total += (respuestasConsumoVehiculo.cantidadKmAvion * factoresDeEmisionPromedios.avion) / 365;
+        return total;
+    }
 
     // Acceso al evento 'submit' de los formularios, y agrego la logica para recolectar los datos, luego los muestro por consola.
 
-
     formularioVehiculo.addEventListener('submit', (e) => {
         e.preventDefault()
-        respuestasConsumoVehiculo.cantidadKmAutoPorSemana = Number(formularioVehiculo.elements['cantidad-km-auto'].value);
+        respuestasConsumoVehiculo.cantidadKmAutoPorDia = Number(formularioVehiculo.elements['cantidad-km-auto'].value * 4);
+
         respuestasConsumoVehiculo.tipoCombustible = formularioVehiculo.elements['tipo-de-combustible'].value;
-        respuestasConsumoVehiculo.cantidadKmColectivo = Number(formularioVehiculo.elements['cantidad-km-colectivo'].value);
+
+        respuestasConsumoVehiculo.cantidadKmColectivo = Number(formularioVehiculo.elements['cantidad-km-colectivo'].value * 31);
         respuestasConsumoVehiculo.cantidadKmBicicleta = Number(formularioVehiculo.elements['cantidad-km-bicleta'].value);
 
         let avion = $$("input[name = 'avion']:checked").value;
@@ -78,7 +115,14 @@ addEventListener('DOMContentLoaded', () => {
                 alert('Valor de vuelos no aceptado');
         }
 
-        console.log(respuestasConsumoVehiculo, 1);
+        if (respuestasConsumoVehiculo.tipoCombustible === null || respuestasConsumoVehiculo.tipoCombustible === 'Seleccionar Tipo de Combustible') {
+            alert('Debe seleccionar un tipo de combustible')
+        } else {
+            let botonSubmit = formularioVehiculo.elements['boton-submit'];
+            botonSubmit.textContent = 'Enviado!'
+        }
+        let total = calcularVehiculo()
+        console.log(respuestasConsumoVehiculo, total);
     }
     )
 
