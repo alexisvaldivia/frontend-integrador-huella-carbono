@@ -4,12 +4,6 @@ const $$ = (elem) => document.querySelector(elem);
 
 addEventListener('DOMContentLoaded', () => {
     // A penas cargue todo el contenido del HTML, me defino las variables/constantes que voy a necesitar para trabajar en la recoleccion de datos.
-    const tipoCombustible = {
-        nafta: 'nafta',
-        gnc: 'Gas Natural Comprimido',
-        diesel: 'Diesel',
-        electrico: 'Electrico'
-    }
 
     const viajesAvion = {
         noViajo: 0,
@@ -34,40 +28,21 @@ addEventListener('DOMContentLoaded', () => {
         renovacionDispositivos: null
     }
 
-    const formularioVehiculo = $('formulario-vehiculo');
-
-    // Acceso al evento 'submit' del formulario, y agrego la logica para recolectar los datos y mostrarlos en la consola.
-    formularioVehiculo.addEventListener('submit', (e) => {
-        e.preventDefault()
-        respuestasConsumoVehiculo.cantidadKmAutoPorSemana = Number(formularioVehiculo.elements['cantidad-km-auto'].value);
-        respuestasConsumoVehiculo.tipoCombustible = formularioVehiculo.elements['tipo-de-combustible'].value;
-        respuestasConsumoVehiculo.cantidadKmColectivo = Number(formularioVehiculo.elements['cantidad-km-colectivo'].value);
-        respuestasConsumoVehiculo.cantidadKmBicicleta = Number(formularioVehiculo.elements['cantidad-km-bicleta'].value);
-
-        let avion = $$("input[name = 'avion']:checked").value;
-
-        switch (avion) {
-            case 'no-viajo':
-                respuestasConsumoVehiculo.cantidadKmAvion = viajesAvion.noViajo;
-                break;
-            case 'poco':
-                respuestasConsumoVehiculo.cantidadKmAvion = viajesAvion.de500a1000;
-                break;
-            case 'medio':
-                respuestasConsumoVehiculo.cantidadKmAvion = viajesAvion.de1000a2500;
-                break;
-            case 'alto':
-                respuestasConsumoVehiculo.cantidadKmAvion = viajesAvion.de2500a5000;
-                break;
-            default:
-                alert('Valor de vuelos no aceptado');
-        }
-
-        console.log(respuestasConsumoVehiculo);
+    const respuestasVivienda = {
+        consumoElectrico: 0,
+        tipoEnergia: null,
+        consumoGas: 0,
+        otrosCombustibles: "",
+        tamanoVivienda: 0,
+        personasHogar: 1
     }
-    )
 
+    const formularioVehiculo = $('formulario-vehiculo');
     const formularioConsumo = $('formulario-consumo');
+    const formularioVivienda = $('formulario-vivienda');
+
+    // Acceso al evento 'submit' de los formularios, y agrego la logica para recolectar los datos, luego los muestro por consola.
+
 
     formularioVehiculo.addEventListener('submit', (e) => {
         e.preventDefault()
@@ -95,7 +70,7 @@ addEventListener('DOMContentLoaded', () => {
                 alert('Valor de vuelos no aceptado');
         }
 
-        console.log(respuestasConsumoVehiculo);
+        console.log(respuestasConsumoVehiculo, 1);
     }
     )
 
@@ -110,7 +85,7 @@ addEventListener('DOMContentLoaded', () => {
         if (reciclaSeleccion) {
             respuestasConsumo.recicla = reciclaSeleccion.value;
         } else {
-            alert("Por favor selecciona una opción de reciclaje");
+            alert("Seleccionar una opción de reciclaje");
             return;
         }
 
@@ -119,4 +94,18 @@ addEventListener('DOMContentLoaded', () => {
 
         console.log(respuestasConsumo);
     })
+
+    formularioVivienda.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        respuestasVivienda.consumoElectrico = Number(formularioVivienda.elements['consumo-electrico'].value);
+        respuestasVivienda.tipoEnergia = formularioVivienda.elements['tipo-energia'].value;
+        respuestasVivienda.consumoGas = Number(formularioVivienda.elements['consumo-gas'].value);
+        respuestasVivienda.tamanoVivienda = Number(formularioVivienda.elements['tamano-vivienda'].value);
+        respuestasVivienda.personasHogar = Number(formularioVivienda.elements['personas-hogar'].value);
+
+        console.log(respuestasVivienda);
+    });
+
+
 })
