@@ -23,6 +23,7 @@ header {
 
 	.bg-primary:hover{
 		background-color: white;
+		color: black;
 	}
 	.hover\:bg-green-800:hover {
 		background-color: var(--var-secondary);
