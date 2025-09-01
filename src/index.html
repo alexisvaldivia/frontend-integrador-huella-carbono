@@ -67,5 +67,142 @@
 	<script>
 		AOS.init();
 	</script>
+
+		<section
+			class="relative flex flex-col items-center justify-center p-16 rounded-xl"
+		>
+			<div>
+				<h4 class="block text-xl font-medium text-slate-800">Vehiculo</h4>
+				<p class="font-light text-slate-500">
+					Rellene los campos para poder calcular las emisiones en base a su
+					transporte
+				</p>
+			</div>
+
+			<form class="max-w-screen-lg mt-8 mb-2 w-80 sm:w-96">
+				<!-- INPUT 1 -->
+				<div class="flex flex-col gap-6 mb-1">
+					<div class="w-full max-w-sm min-w-[200px]">
+						<label class="block mb-2 text-sm font-medium text-gray-900">
+							¿Cuántos kilómetros recorres en coche por semana?
+						</label>
+						<input
+							type="text"
+							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+							placeholder="Ej: 100"
+						/>
+					</div>
+				</div>
+
+				<!-- SELECT -->
+				<div class="flex flex-col mb-1">
+					<label
+						for="countries"
+						class="block mb-2 text-sm font-medium text-gray-900"
+					>
+						Seleccione una opción
+					</label>
+					<select
+						id="countries"
+						class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+					>
+						<option selected>Seleccionar Tipo de Combustible</option>
+						<option value="nafta">Nafta</option>
+						<option value="gnc">Gas Natural Comprimido (GNC)</option>
+						<option value="diesel">Diésel</option>
+						<option value="electrico">Eléctrico</option>
+					</select>
+				</div>
+
+				<!-- INPUT 2 -->
+				<div class="flex flex-col gap-6 mb-1">
+					<div class="w-full max-w-sm min-w-[200px]">
+						<label class="block mb-2 text-sm font-medium text-gray-900">
+							¿Cuántos kilómetros recorres en colectivo al día?
+						</label>
+						<input
+							type="text"
+							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+							placeholder="Ej: 20"
+						/>
+					</div>
+				</div>
+
+				<!-- INPUT 3 -->
+				<div class="flex flex-col gap-6 mb-1">
+					<div class="w-full max-w-sm min-w-[200px]">
+						<label class="block mb-2 text-sm font-medium text-gray-900">
+							¿Cuántos kilómetros recorres en bicicleta al día?
+						</label>
+						<input
+							type="text"
+							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+							placeholder="Ej: 5"
+						/>
+					</div>
+				</div>
+
+				<div class="flex flex-col mb-1">
+					<label class="block mb-2 text-sm font-medium text-gray-900">
+						¿Qué tanto viajas en avión?
+					</label>
+					<div class="flex flex-col gap-3">
+						<label
+							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+						>
+							<input
+								type="radio"
+								name="avion"
+								value="poco"
+								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+							/>
+							No viajo en avion
+						</label>
+
+						<label
+							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+						>
+							<input
+								type="radio"
+								name="avion"
+								value="mucho"
+								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+							/>
+							500 - 1000 km
+						</label>
+						<label
+							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+						>
+							<input
+								type="radio"
+								name="avion"
+								value="mucho"
+								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+							/>
+							1000 - 2500 km
+						</label>
+						<label
+							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+						>
+							<input
+								type="radio"
+								name="avion"
+								value="poco"
+								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+							/>
+							2500 - 5000 km
+						</label>
+					</div>
+				</div>
+
+				<!-- BOTÓN -->
+				<button
+					class="w-full px-4 py-2 mt-4 text-sm text-center text-white transition-all border border-transparent rounded-md shadow-md bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					type="button"
+				>
+					Enviar datos
+				</button>
+			</form>
+		</section>
 	</body>
 </html>
