@@ -13,6 +13,66 @@ Este Proyecto es una herramienta web simple para poder calcular el total de gase
 
 ## Códigos Importantes en este Proyecto
 
+1. **Manipulación del DOM:** Estas funciones facilitan el acceso a elementos del DOM y evita la repetición de `document.getElementById` o de `querySelector`.
+
+    const $ = (elem) => document.getElementById(elem);
+    const $$ = (elem) => document.querySelector(elem);
+
+2. **Estructura de datos y factores de emisión:** Este objeto centraliza los factores de emisión que utilizamos para cada cálculo, facilitandonos su mantenimiento y actualización.
+
+    const factoresDeEmisionPromedios = {
+  Transporte: {
+    nafta: 0.192,
+    gnc: 0.166,
+    diesel: 0.171,
+    electrico: 0.05,
+  },
+  colectivo: 0.089,
+  avion: 0.128,
+  bicicleta: 0,
+  electricidad: {
+    renovable: 0.05,
+    mixta: 0.15,
+  },
+  gas: 2.0,
+  ropa: 20,
+  dispositivo: 200,
+  carne: 27,
+  dietaAnimal: {
+    alto: 3000,
+    medio: 1500,
+    bajo: 500,
+  },
+};
+
+3. **Ejemplo de Función de cálculo:** Esta función calcula las emisiones mensuales por transporte y toma en cuenta los medios y tipos de combustible.
+
+    function calcularTransporte() {
+  let total = 0;
+  if (respuestasTransporte.tipoCombustible) {
+    total += respuestasTransporte.cantidadKmAutoPorDia *
+      factoresDeEmisionPromedios.Transporte[respuestasTransporte.tipoCombustible];
+  }
+  total += respuestasTransporte.cantidadKmColectivo * factoresDeEmisionPromedios.colectivo;
+  total += respuestasTransporte.cantidadKmBicicleta * factoresDeEmisionPromedios.bicicleta;
+  total += (respuestasTransporte.cantidadKmAvion * factoresDeEmisionPromedios.avion) / 365;
+  total *= 30;
+  totalEmisiones += total;
+  return total;
+}
+
+4. **Ejemplo de manejo de formularios:** recolección de datos del usuario y cálculo de la huella de carbono al enviar el formulario.
+
+    formularioTransporte.addEventListener('submit', (e) => {
+  e.preventDefault();
+  respuestasTransporte.cantidadKmAutoPorDia = Number(
+    formularioTransporte.elements['cantidad-km-auto'].value * 4
+  );
+  // ...recolección de datos y validaciones
+  let totalTransporte = calcularTransporte();
+  console.log(respuestasTransporte, totalTransporte);
+});
+
 ---
 
 ## Estas son algunas imagenes de nuestra Calculadora
