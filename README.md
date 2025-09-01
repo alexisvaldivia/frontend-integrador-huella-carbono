@@ -11,6 +11,18 @@ Este Proyecto es una herramienta web simple para poder calcular el total de gase
 
 ---
 
+## Códigos Importantes en este Proyecto
+
+---
+
+## Estas son algunas imagenes de nuestra Calculadora
+
+![Captura de pantalla vista mobile](assets/captura-mobile.jpg)
+![Captura de pantalla vista PC](assets/captura-pc.jpg)
+![Captura de pantalla vista del Formulario](assets/captura-vista-formulario.jpg)
+
+---
+
 ## Tecnologías Utilizadas
 
 * `index.html`: Estructura principal de la página y el contenido del formulario.
