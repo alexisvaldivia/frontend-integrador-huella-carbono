@@ -4,7 +4,8 @@ const $$ = (elem) => document.querySelector(elem);
 
 addEventListener('DOMContentLoaded', () => {
     // A penas cargue todo el contenido del HTML, me defino las variables/constantes que voy a necesitar para trabajar en la recoleccion de datos.
-    const formularioTransporte = $('formulario-Transporte');
+
+    const formularioTransporte = $('formulario-transporte');
     const formularioConsumo = $('formulario-consumo');
     const formularioVivienda = $('formulario-vivienda');
     const formularioAlimentacion = $('formulario-alimentacion');
@@ -16,7 +17,7 @@ addEventListener('DOMContentLoaded', () => {
         de2500a5000: 7500 / 2
     }
 
-    const respuestasConsumoTransporte = {
+    const respuestasTransporte = {
         cantidadKmAutoPorDia: 0,
         tipoCombustible: null,
         cantidadKmColectivo: 0,
@@ -36,9 +37,6 @@ addEventListener('DOMContentLoaded', () => {
         consumoElectrico: 0,
         tipoEnergia: null,
         consumoGas: 0,
-        otrosCombustibles: "",
-        tamanoVivienda: 0,
-        personasHogar: 1
     }
 
     const respuestasAlimentacion = {
@@ -75,39 +73,36 @@ addEventListener('DOMContentLoaded', () => {
     }
 
     // Defino las funciones que calculan el total de emisiones en base a los datos (devuelve las emisiones mensuales)
+
     function calcularTransporte() {
         let total = 0;
         // Si el tipo de combustible es !null se calcula el total dependiendo el tipo de combustible
-        if (respuestasConsumoTransporte.tipoCombustible) {
-            total += respuestasConsumoTransporte.cantidadKmAutoPorDia * factoresDeEmisionPromedios.Transporte[respuestasConsumoTransporte.tipoCombustible];
+        if (respuestasTransporte.tipoCombustible) {
+            total += respuestasTransporte.cantidadKmAutoPorDia * factoresDeEmisionPromedios.Transporte[respuestasTransporte.tipoCombustible];
         }
-        total += respuestasConsumoTransporte.cantidadKmColectivo * factoresDeEmisionPromedios.colectivo;
-        total += respuestasConsumoTransporte.cantidadKmBicicleta * factoresDeEmisionPromedios.bicicleta;
-        total += (respuestasConsumoTransporte.cantidadKmAvion * factoresDeEmisionPromedios.avion) / 365;
+        total += respuestasTransporte.cantidadKmColectivo * factoresDeEmisionPromedios.colectivo;
+        total += respuestasTransporte.cantidadKmBicicleta * factoresDeEmisionPromedios.bicicleta;
+        total += (respuestasTransporte.cantidadKmAvion * factoresDeEmisionPromedios.avion) / 365;
         return total * 30;
     }
 
     function calcularConsumo() {
         let total = 0;
 
-        // Emisiones por ropa aproximados kg CO2e por cada $100 gastados
         if (respuestasConsumo.gastoRopa > 0) {
             total += (respuestasConsumo.gastoRopa / 100) * factoresDeEmisionPromedios.ropa;
         }
 
-        // Emisiones por dispositivos electrónicos
         if (respuestasConsumo.cantidadDispositivos > 0) {
             total += respuestasConsumo.cantidadDispositivos * factoresDeEmisionPromedios.dispositivo;
         }
 
-        // Ajuste por segunda mano (reduce impacto)
         if (respuestasConsumo.segundaMano === "si") {
             total *= 0.7; // reducimos un 30%
         }
 
-        // Ajuste por reciclaje (reduce impacto)
         if (respuestasConsumo.recicla === "si") {
-            total *= 0.9; // reducimos un 10%
+            total *= 0.9;
         }
 
         return total;
@@ -118,9 +113,8 @@ addEventListener('DOMContentLoaded', () => {
 
         if (respuestasVivienda.consumoElectrico > 0) {
             let factorElectrico = factoresDeEmisionPromedios.electricidad;
-            // Ajuste según tipo de energía
-            if (respuestasVivienda.tipoEnergia === 'Renovable') factorElectrico = factoresDeEmisionPromedios.electricidad.renovable;
-            else if (respuestasVivienda.tipoEnergia === 'Mixta') factorElectrico = factoresDeEmisionPromedios.electricidad.mixta;
+            if (respuestasVivienda.tipoEnergia === 'renovable') factorElectrico = factoresDeEmisionPromedios.electricidad.renovable;
+            else if (respuestasVivienda.tipoEnergia === 'mixta') factorElectrico = factoresDeEmisionPromedios.electricidad.mixta;
             total += respuestasVivienda.consumoElectrico * factorElectrico;
         }
 
@@ -131,45 +125,68 @@ addEventListener('DOMContentLoaded', () => {
         return total;
     }
 
+    function calcularAlimentacion() {
+        let total = 0;
+
+        if (respuestasAlimentacion.dietaAnimal) {
+            total += factoresDeEmisionPromedios.dietaAnimal[respuestasAlimentacion.dietaAnimal];
+        }
+
+        if (respuestasAlimentacion.gastoAlimentacion > 0) {
+            // suponemos que cada $100 de gasto promedio equivale a X kgCO2e
+            total += (respuestasAlimentacion.gastoAlimentacion / 100) * 5;
+        }
+
+        if (respuestasAlimentacion.comidasCarne > 0) {
+            total += respuestasAlimentacion.comidasCarne * factoresDeEmisionPromedios.carne;
+        }
+
+        if (respuestasAlimentacion.alimentosLocales === "si") {
+            total *= 0.8;
+        }
+
+        return total;
+    }
 
     // Accedo al evento 'submit' de los formularios, y agrego la logica para recolectar los datos, luego los muestro por consola.
 
     formularioTransporte.addEventListener('submit', (e) => {
         e.preventDefault()
-        respuestasConsumoTransporte.cantidadKmAutoPorDia = Number(formularioTransporte.elements['cantidad-km-auto'].value * 4);
+        respuestasTransporte.cantidadKmAutoPorDia = Number(formularioTransporte.elements['cantidad-km-auto'].value * 4);
 
-        respuestasConsumoTransporte.tipoCombustible = formularioTransporte.elements['tipo-de-combustible'].value;
+        respuestasTransporte.tipoCombustible = formularioTransporte.elements['tipo-de-combustible'].value;
 
-        respuestasConsumoTransporte.cantidadKmColectivo = Number(formularioTransporte.elements['cantidad-km-colectivo'].value * 31);
-        respuestasConsumoTransporte.cantidadKmBicicleta = Number(formularioTransporte.elements['cantidad-km-bicleta'].value);
+        respuestasTransporte.cantidadKmColectivo = Number(formularioTransporte.elements['cantidad-km-colectivo'].value * 31);
+        respuestasTransporte.cantidadKmBicicleta = Number(formularioTransporte.elements['cantidad-km-bicleta'].value);
 
         let avion = $$("input[name = 'avion']:checked").value;
 
         switch (avion) {
             case 'no-viajo':
-                respuestasConsumoTransporte.cantidadKmAvion = viajesAvion.noViajo;
+                respuestasTransporte.cantidadKmAvion = viajesAvion.noViajo;
                 break;
             case 'poco':
-                respuestasConsumoTransporte.cantidadKmAvion = viajesAvion.de500a1000;
+                respuestasTransporte.cantidadKmAvion = viajesAvion.de500a1000;
                 break;
             case 'medio':
-                respuestasConsumoTransporte.cantidadKmAvion = viajesAvion.de1000a2500;
+                respuestasTransporte.cantidadKmAvion = viajesAvion.de1000a2500;
                 break;
             case 'alto':
-                respuestasConsumoTransporte.cantidadKmAvion = viajesAvion.de2500a5000;
+                respuestasTransporte.cantidadKmAvion = viajesAvion.de2500a5000;
                 break;
             default:
                 alert('Valor de vuelos no aceptado');
+                return;
         }
 
-        if (respuestasConsumoTransporte.tipoCombustible === null || respuestasConsumoTransporte.tipoCombustible === 'Seleccionar Tipo de Combustible') {
+        if (respuestasTransporte.tipoCombustible === null || respuestasTransporte.tipoCombustible === 'Seleccionar Tipo de Combustible') {
             alert('Debe seleccionar un tipo de combustible')
         } else {
             let botonSubmit = formularioTransporte.elements['boton-submit'];
             botonSubmit.textContent = 'Enviado!'
         }
         let total = calcularTransporte()
-        console.log(respuestasConsumoTransporte, total);
+        console.log(respuestasTransporte, total);
     }
     )
 
@@ -201,30 +218,33 @@ addEventListener('DOMContentLoaded', () => {
         respuestasVivienda.consumoElectrico = Number(formularioVivienda.elements['consumo-electrico'].value);
         respuestasVivienda.tipoEnergia = formularioVivienda.elements['tipo-energia'].value;
         respuestasVivienda.consumoGas = Number(formularioVivienda.elements['consumo-gas'].value);
-        respuestasVivienda.tamanoVivienda = Number(formularioVivienda.elements['tamano-vivienda'].value);
-        respuestasVivienda.personasHogar = Number(formularioVivienda.elements['personas-hogar'].value);
 
-        let total = calcularConsumo();
-        console.log(respuestasVivienda, total);
+        if (respuestasVivienda.tipoEnergia !== 'Selecciona una opción') {
+            let total = calcularVivienda();
+            console.log(respuestasVivienda, total);
+        } else {
+            alert('Debe seleccionar un tipo de energia');
+            return;
+        }
+
     });
 
     formularioAlimentacion.addEventListener('submit', (e) => {
         e.preventDefault();
 
         respuestasAlimentacion.dietaAnimal = formularioAlimentacion.elements['dieta-animal'].value;
-
-        let alimentosLocalesSeleccion = $$("input[name='alimentos-locales']:checked");
-        if (alimentosLocalesSeleccion) {
-            respuestasAlimentacion.alimentosLocales = alimentosLocalesSeleccion.value;
-        } else {
-            alert("Por favor selecciona si consumes alimentos locales");
-            return;
-        }
-
         respuestasAlimentacion.gastoAlimentacion = Number(formularioAlimentacion.elements['gasto-alimentacion'].value);
         respuestasAlimentacion.comidasCarne = Number(formularioAlimentacion.elements['comidas-carne'].value);
 
+        let alimentosLocalesSeleccion = $$("input[name='alimentos-locales']:checked");
+        if (alimentosLocalesSeleccion && respuestasAlimentacion.dietaAnimal !== 'Selecciona una opción') {
+            respuestasAlimentacion.alimentosLocales = alimentosLocalesSeleccion.value;
+        } else {
+            alert("Seleccione si consume alimentos locales y el porcentaje de su dieta");
+            return;
+        }
 
-        console.log(respuestasAlimentacion);
+        let total = calcularAlimentacion()
+        console.log(respuestasAlimentacion, total);
     });
 })

@@ -39,12 +39,11 @@
 				</button>
 			</div>
 		</header>
-
 		<section
 			class="relative flex flex-col items-center justify-center p-16 rounded-xl"
 		>
 			<div>
-				<h3 class="block text-xl font-medium text-slate-800">Vehiculo</h3>
+				<h3 class="block text-xl font-medium text-slate-800">Transporte</h3>
 				<p class="font-light text-slate-500">
 					Rellene los campos para poder calcular las emisiones en base a su
 					transporte
@@ -53,7 +52,7 @@
 
 			<form
 				class="flex flex-col max-w-screen-lg gap-5 mt-8 mb-2 w-80 sm:w-96"
-				id="formulario-vehiculo"
+				id="formulario-transporte"
 			>
 				<div class="flex flex-col gap-6 mb-1">
 					<div class="w-full max-w-sm min-w-[200px]">
@@ -345,7 +344,7 @@
 						name="tipo-energia"
 						class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
 					>
-						<option selected>Selecciona una opción</option>
+						<option selected disabled>Selecciona una opción</option>
 						<option value="renovable">Renovable</option>
 						<option value="mixta">Mixta</option>
 						<option value="convencional">Convencional</option>
@@ -365,96 +364,6 @@
 							name="consumo-gas"
 							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
 							placeholder="Ej: 50"
-						/>
-					</div>
-				</div>
-
-				<button
-					class="w-full px-4 py-2 mt-4 text-sm text-center text-white transition-all border border-transparent rounded-md shadow-md bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-					type="submit"
-					id="botonDatosVivienda"
-				>
-					Enviar datos
-				</button>
-			</form>
-		</section>
-		<section
-			class="relative flex flex-col items-center justify-center p-16 rounded-xl"
-		>
-			<div>
-				<h3 class="block text-xl font-medium text-slate-800">Vivienda</h3>
-				<p class="font-light text-slate-500">
-					Rellene los campos para poder calcular las emisiones en base al
-					consumo dentro de su vivienda.
-				</p>
-			</div>
-
-			<form
-				class="flex flex-col max-w-screen-lg gap-5 mt-8 mb-2 w-80 sm:w-96"
-				id="formulario-vivienda"
-			>
-				<div class="flex flex-col gap-6 mb-1">
-					<div class="w-full max-w-sm min-w-[200px]">
-						<label class="block mb-2 text-sm font-medium text-gray-900">
-							¿Cuál es tu consumo eléctrico mensual? (kWh)
-						</label>
-						<input
-							type="number"
-							min="0"
-							value="0"
-							required
-							name="consumo-electrico"
-							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-							placeholder="Ej: 250"
-						/>
-					</div>
-				</div>
-
-				<div class="flex flex-col mb-1">
-					<label class="block mb-2 text-sm font-medium text-gray-900">
-						¿Qué tipo de energía utilizas?
-					</label>
-					<select
-						name="tipo-energia"
-						class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-					>
-						<option selected>Selecciona una opción</option>
-						<option value="renovable">Renovable</option>
-						<option value="mixta">Mixta</option>
-						<option value="convencional">Convencional</option>
-					</select>
-				</div>
-
-				<div class="flex flex-col gap-6 mb-1">
-					<div class="w-full max-w-sm min-w-[200px]">
-						<label class="block mb-2 text-sm font-medium text-gray-900">
-							¿Cuál es tu consumo de gas natural? (m³/mes)
-						</label>
-						<input
-							type="number"
-							min="0"
-							value="0"
-							required
-							name="consumo-gas"
-							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-							placeholder="Ej: 50"
-						/>
-					</div>
-				</div>
-
-				<div class="flex flex-col gap-6 mb-1">
-					<div class="w-full max-w-sm min-w-[200px]">
-						<label class="block mb-2 text-sm font-medium text-gray-900">
-							¿Cuántas personas viven en el hogar?
-						</label>
-						<input
-							type="number"
-							min="1"
-							value="1"
-							required
-							name="personas-hogar"
-							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-							placeholder="Ej: 4"
 						/>
 					</div>
 				</div>
@@ -489,8 +398,9 @@
 					<select
 						name="dieta-animal"
 						class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+						
 					>
-						<option selected>Selecciona una opción</option>
+						<option selected disabled>Selecciona una opción</option>
 						<option value="alto">Alto</option>
 						<option value="medio">Medio</option>
 						<option value="bajo">Bajo</option>
