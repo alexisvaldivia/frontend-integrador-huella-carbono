@@ -30,3 +30,7 @@ header {
 	}
 
 }
+
+.bg-primary{
+	background: var(--var-primary);
+}
