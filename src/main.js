@@ -1,8 +1,8 @@
 // Lógica del Dark Mode, elementos clave para gestionar el modo oscuro: raíz del documento, toggle de activación, indicador visual y texto del modo. 
-    const html = document.documentElement;    // <html>
-    const toggle = document.getElementById("darkToggle");
-    const dot = document.getElementById("switchDot");
-    const modeText = document.getElementById("mode_text");
+const html = document.documentElement;
+const toggle = document.getElementById("darkToggle");
+const dot = document.getElementById("switchDot");
+const modeText = document.getElementById("mode_text");
 
 
 // // Determina el tema inicial según la preferencia guardada en localStorage o la configuración del sistema (modo oscuro o claro).
