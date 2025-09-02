@@ -1,26 +1,46 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"
+	class="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="style.css" />
 		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				darkMode: 'class'
+			}
+		</script>
 		<script src="main.js" defer></script>
 		<title>Calculadora Huella de Carbono Personal</title>
 	</head>
-	<body class="h-[100vh]">
+	<body class="bg-white dark:bg-zinc-900 h-[100vh]">
+
+		<!-- Toggle tema Dark -->
+    <nav class="w-full flex items-center justify-between px-4 py-3">
+    <div class="text-lg font-semibold"></div>
+        <label class="flex items-center cursor-pointer select-none">
+            <span id="mode_text" class="mr-3 text-sm dark:text-white">Modo oscuro</span>
+            <input id="darkToggle" type="checkbox" class="hidden" />
+        <div class="w-10 h-5 bg-gray-300 dark:bg-gray-700 rounded-full p-1 flex items-center transition">
+        <div id="switchDot" class="w-4 h-4 bg-white rounded-full shadow transform transition-transform duration-300 ease-in-out"></div>
+        </div>
+        </label>
+    </nav>
+
 		<header
-			class="flex flex-col items-center gap-5 p-5 h-fit pt-15 min-w-11/12 h-6/12"
+			class="bg-[var(--var-primary)] dark:bg-emerald-600 flex flex-col items-center gap-5 p-5 h-fit pt-15 min-w-11/12 h-6/12"
 		>
 			<div class="flex flex-col items-center justify-center p-5 sm:flex-row">
 				<div class="block max-w-30">
 					<img src="./assets/img/co2logo.png" alt="logo" />
 				</div>
-				<h1 class="px-5 text-4xl font-semibold text-center md:text-6xl">
+				<h1 class="text-[var(--var-text-font-primary)] dark:text-white px-5 text-4xl font-semibold text-center md:text-6xl">
 					Calcula tu Huella de Carbono Personal
 				</h1>
 			</div>
-			<h2 class="max-w-[1000px] text-center">
+			<h2 class="text[var(--var-text-font)] dark:text-green-950 max-w-[1000px] text-center">
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
 				incidunt ea cum blanditiis, qui et tempora, quos nihil consequatur
 				adipisci, rerum molestias minima quasi. Repellendus, autem! Aperiam odit
@@ -28,12 +48,12 @@
 			</h2>
 			<div class="flex gap-5">
 				<button
-					class="block px-10 py-2 mx-auto font-semibold text-black duration-300 bg-white border-2 border-green-900 rounded-lg text-nowrap hover:bg-green-800 hover:text-white md:text-xl"
+					class="block px-10 py-2 mx-auto font-semibold text-black duration-300 bg-white border-2 border-green-900 rounded-lg text-nowrap hover:bg-green-800 hover:text-white md:text-xl dark:hover:bg-lime-500"
 				>
 					Saber mas
 				</button>
 				<button
-					class="block px-5 py-2 mx-auto font-semibold text-white duration-300 border-2 rounded-lg text-nowrap bg-primary hover:bg-white hover:border-green-800 hover:text-black md:text-xl"
+					class="block px-5 py-2 mx-auto font-semibold text-white duration-300 border-2 rounded-lg text-nowrap bg-primary hover:bg-white hover:border-green-800 hover:text-black md:text-xl dark:bg-lime-500 dark:border-green-900"
 				>
 					Empezar a calcular
 				</button>
