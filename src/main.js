@@ -1,3 +1,32 @@
+// Lógica del Dark Mode, elementos clave para gestionar el modo oscuro: raíz del documento, toggle de activación, indicador visual y texto del modo. 
+    const html = document.documentElement;    // <html>
+    const toggle = document.getElementById("darkToggle");
+    const dot = document.getElementById("switchDot");
+    const modeText = document.getElementById("mode_text");
+
+
+// // Determina el tema inicial según la preferencia guardada en localStorage o la configuración del sistema (modo oscuro o claro).
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+const saved = localStorage.getItem("theme"); 
+const start = saved ?? (prefersDark ? "dark" : "light");
+
+    applyTheme(start);
+
+    // Escucha el evento de cambio en el toggle y actualiza el tema según su estado: "checked" activa el modo oscuro.
+    toggle.addEventListener("change", () => {
+        applyTheme(toggle.checked ? "dark" : "light");
+    });
+
+    // Función central para sincronizar el modo visual (claro/oscuro) con la interfaz: modifica clases CSS, estado del toggle, texto del modo y persistencia en localStorage.
+    function applyTheme(mode) {
+        const isDark = mode === "dark";
+        html.classList.toggle("dark", isDark);
+        toggle.checked = isDark;
+        dot.classList.toggle("translate-x-5", isDark);
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        modeText.textContent = isDark ? "Modo Oscuro" : "Modo Claro";
+    }
+
 // Estas dos funciones siempre las defino cuando trabajo con JS Vanilla y tengo que hacer gastantes gets del html, me ayudan a no repetir tanto los metodos.
 const $ = (elem) => document.getElementById(elem);
 const $$ = (elem) => document.querySelector(elem);
