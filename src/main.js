@@ -302,4 +302,17 @@ addEventListener('DOMContentLoaded', () => {
         console.log(respuestasAlimentacion, total);
         console.log(totalEmisiones.toFixed(2))
     });
+
+
+
+
+
+    //swiper
+
+    var swiper = new Swiper(".mySwiper", {
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
 });
