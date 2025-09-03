@@ -1,33 +1,3 @@
-// Lógica del Dark Mode
-    
-    const html = document.documentElement;    // <html>
-    const toggle = document.getElementById("darkToggle");
-    const dot = document.getElementById("switchDot");
-    const modeText = document.getElementById("mode_text");
-
-
-// Tema inicial: localStorage o preferencia del sistema
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const saved = localStorage.getItem("theme"); // "dark" | "light" | null
-const start = saved ?? (prefersDark ? "dark" : "light");
-
-    applyTheme(start);
-
-    // Escuchar cambios del toggle
-    toggle.addEventListener("change", () => {
-        applyTheme(toggle.checked ? "dark" : "light");
-    });
-
-    // Función para aplicar tema
-    function applyTheme(mode) {
-        const isDark = mode === "dark";
-        html.classList.toggle("dark", isDark);
-        toggle.checked = isDark;
-        dot.classList.toggle("translate-x-5", isDark);
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-        modeText.textContent = isDark ? "Modo Oscuro" : "Modo Claro";
-    }
-
 // Estas dos funciones siempre las defino cuando trabajo con JS Vanilla y tengo que hacer gastantes gets del html, me ayudan a no repetir tanto los metodos.
 const $ = (elem) => document.getElementById(elem);
 const $$ = (elem) => document.querySelector(elem);
@@ -102,6 +72,11 @@ addEventListener('DOMContentLoaded', () => {
             bajo: 500,
         },
     };
+
+    // Esta funcion se utilizara en cada formulario para decirle al usuario que sus datos ya fueron guardados, cambiando el texto del boton submit
+    function cambiarTextoBoton(el) {
+        el.textContent = 'Enviado!'
+    }
 
     // Defino las funciones que calculan el total de emisiones en base a los datos (devuelve las emisiones mensuales)
 
@@ -247,7 +222,7 @@ addEventListener('DOMContentLoaded', () => {
             return;
         } else {
             let botonSubmit = formularioTransporte.elements['boton-submit'];
-            botonSubmit.textContent = 'Enviado!';
+            cambiarTextoBoton(botonSubmit)
         }
 
         let totalTransporte = calcularTransporte();
@@ -261,10 +236,12 @@ addEventListener('DOMContentLoaded', () => {
         respuestasConsumo.gastoRopa = Number(
             formularioConsumo.elements['gasto-ropa'].value
         );
+
         respuestasConsumo.segundaMano =
             formularioConsumo.elements['segunda-mano'].value;
 
         let reciclaSeleccion = $$("input[name='recicla']:checked");
+
         if (reciclaSeleccion) {
             respuestasConsumo.recicla = reciclaSeleccion.value;
         } else {
@@ -277,6 +254,8 @@ addEventListener('DOMContentLoaded', () => {
         );
 
         let total = calcularConsumo();
+        let botonSubmit = formularioConsumo.elements['boton-submit'];
+        cambiarTextoBoton(botonSubmit);
         console.log(respuestasConsumo, total);
     });
 
@@ -294,11 +273,16 @@ addEventListener('DOMContentLoaded', () => {
 
         if (respuestasVivienda.tipoEnergia !== 'Selecciona una opción') {
             let total = calcularVivienda();
+            let botonSubmit = formularioVivienda.elements['boton-submit'];
+            cambiarTextoBoton(botonSubmit);
             console.log(respuestasVivienda, total);
         } else {
             alert('Debe seleccionar un tipo de energia');
             return;
         }
+
+        let botonSubmit = formularioConsumo.elements['boton-submit'];
+        cambiarTextoBoton(botonSubmit);
     });
 
     formularioAlimentacion.addEventListener('submit', (e) => {
@@ -329,22 +313,25 @@ addEventListener('DOMContentLoaded', () => {
         }
 
         let total = calcularAlimentacion();
+        let botonSubmit = formularioAlimentacion.elements['boton-submit'];
+        cambiarTextoBoton(botonSubmit);
         console.log(respuestasAlimentacion, total);
         console.log(totalEmisiones.toFixed(2))
+
+        let totalEmisionesHTML = $('total-emisiones');
+
+        totalEmisionesHTML.textContent = totalEmisiones.toFixed(2);
     });
 
 
 
 
 
+    
 
 
-
-
-
-
-    //Lo que hace funcionar a la paginacion del formulario
-    var swiper = new Swiper(".mySwiper", {
+   //lo que hace funcionar al swiper
+   var swiper = new Swiper(".mySwiper", {
       pagination: {
         el: ".swiper-pagination",
       },
