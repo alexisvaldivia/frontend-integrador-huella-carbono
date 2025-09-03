@@ -29,3 +29,6 @@ header {
 	}
 
 }
+.bg-secondary{
+	background: var(--var-secondary);
+}
