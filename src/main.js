@@ -73,6 +73,11 @@ addEventListener('DOMContentLoaded', () => {
         },
     };
 
+    // Esta funcion se utilizara en cada formulario para decirle al usuario que sus datos ya fueron guardados, cambiando el texto del boton submit
+    function cambiarTextoBoton(el) {
+        el.textContent = 'Enviado!'
+    }
+
     // Defino las funciones que calculan el total de emisiones en base a los datos (devuelve las emisiones mensuales)
 
     function calcularTransporte() {
@@ -217,7 +222,7 @@ addEventListener('DOMContentLoaded', () => {
             return;
         } else {
             let botonSubmit = formularioTransporte.elements['boton-submit'];
-            botonSubmit.textContent = 'Enviado!';
+            cambiarTextoBoton(botonSubmit)
         }
 
         let totalTransporte = calcularTransporte();
@@ -231,10 +236,12 @@ addEventListener('DOMContentLoaded', () => {
         respuestasConsumo.gastoRopa = Number(
             formularioConsumo.elements['gasto-ropa'].value
         );
+
         respuestasConsumo.segundaMano =
             formularioConsumo.elements['segunda-mano'].value;
 
         let reciclaSeleccion = $$("input[name='recicla']:checked");
+
         if (reciclaSeleccion) {
             respuestasConsumo.recicla = reciclaSeleccion.value;
         } else {
@@ -247,6 +254,8 @@ addEventListener('DOMContentLoaded', () => {
         );
 
         let total = calcularConsumo();
+        let botonSubmit = formularioConsumo.elements['boton-submit'];
+        cambiarTextoBoton(botonSubmit);
         console.log(respuestasConsumo, total);
     });
 
@@ -264,11 +273,16 @@ addEventListener('DOMContentLoaded', () => {
 
         if (respuestasVivienda.tipoEnergia !== 'Selecciona una opción') {
             let total = calcularVivienda();
+            let botonSubmit = formularioVivienda.elements['boton-submit'];
+            cambiarTextoBoton(botonSubmit);
             console.log(respuestasVivienda, total);
         } else {
             alert('Debe seleccionar un tipo de energia');
             return;
         }
+
+        let botonSubmit = formularioConsumo.elements['boton-submit'];
+        cambiarTextoBoton(botonSubmit);
     });
 
     formularioAlimentacion.addEventListener('submit', (e) => {
@@ -299,8 +313,14 @@ addEventListener('DOMContentLoaded', () => {
         }
 
         let total = calcularAlimentacion();
+        let botonSubmit = formularioAlimentacion.elements['boton-submit'];
+        cambiarTextoBoton(botonSubmit);
         console.log(respuestasAlimentacion, total);
         console.log(totalEmisiones.toFixed(2))
+
+        let totalEmisionesHTML = $('total-emisiones');
+
+        totalEmisionesHTML.textContent = totalEmisiones.toFixed(2);
     });
 
 
