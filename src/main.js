@@ -323,10 +323,6 @@ addEventListener('DOMContentLoaded', () => {
         totalEmisionesHTML.textContent = totalEmisiones.toFixed(2);
     });
 
-
-
-
-
     //swiper
 
     var swiper = new Swiper(".mySwiper", {
