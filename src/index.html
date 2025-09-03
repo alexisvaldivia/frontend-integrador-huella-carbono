@@ -98,480 +98,535 @@
 		<script>
 			AOS.init();
 		</script>
-	<div class="md:grid md:grid-cols-2">
-		<section
-			class="relative flex flex-col items-center justify-center p-16 rounded-xl bg-primary"
-		>
-			<div>
-				<h3 class="block text-3xl font-bold text-center text-slate-800">Transporte</h3>
-				<p class="font-semibold text-slate-800">
-					Rellene los campos para poder calcular las emisiones en base a su
-					transporte
-				</p>
-			</div>
 
-			<form
-				class="flex flex-col max-w-screen-lg gap-5 mt-8 mb-2 w-80 sm:w-96"
-				id="formulario-transporte"
+		<div class="md:grid md:grid-cols-2">
+			<section
+				class="relative flex flex-col items-center justify-center p-16 rounded-xl bg-primary"
 			>
-				<div class="flex flex-col gap-6 mb-1">
-					<div class="w-full max-w-sm min-w-[200px]">
-						<label class="block mb-2 text-md font-medium text-gray-900">
-							¿Cuántos kilómetros haces en auto por dia?
-						</label>
-						<input 
-							type="number"
-							min="0"
-							value="0"
-							required
-							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-green-400 hover:border-green-800 focus:shadow"
-							placeholder="Ej: 100"
-							name="cantidad-km-auto"
-						/>
-					</div>
+				<div>
+					<h3 class="block text-3xl font-bold text-center text-slate-800">
+						Transporte
+					</h3>
+					<p class="font-semibold text-slate-800">
+						Rellene los campos para poder calcular las emisiones en base a su
+						transporte
+					</p>
 				</div>
 
-				<div class="flex flex-col mb-1">
-					<label
-						for="countries"
-						class="block mb-2 text-md font-medium text-gray-900"
-					>
-						Seleccione una opción
-					</label>
-					<select
-						id="countries"
-						class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-green-400 hover:border-green-300 focus:shadow"
-						name="tipo-de-combustible"
-					>
-						<option selected disabled>Seleccionar Tipo de Combustible</option>
-						<option value="nafta">Nafta</option>
-						<option value="gnc">Gas Natural Comprimido (GNC)</option>
-						<option value="diesel">Diésel</option>
-						<option value="electrico">Eléctrico</option>
-					</select>
-				</div>
-
-				<div class="flex flex-col gap-6 mb-1">
-					<div class="w-full max-w-sm min-w-[200px]">
-						<label class="block mb-2 text-md font-medium text-gray-900">
-							¿Cuántos kilómetros recorres en colectivo al día?
-						</label>
-						<input
-							type="number"
-							min="0"
-							value="0"
-							required
-							name="cantidad-km-colectivo"
-							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-green-400 hover:border-green-300 focus:shadow"
-							placeholder="Ej: 20"
-						/>
-					</div>
-				</div>
-
-				<div class="flex flex-col gap-6 mb-1">
-					<div class="w-full max-w-sm min-w-[200px]">
-						<label class="block mb-2 text-md font-medium text-gray-900">
-							¿Cuántos kilómetros recorres en bicicleta al día?
-						</label>
-						<input
-							type="number"
-							min="0"
-							value="0"
-							required
-							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-green-400 hover:border-green-300 focus:shadow"
-							placeholder="Ej: 5"
-							name="cantidad-km-bicleta"
-						/>
-					</div>
-				</div>
-
-				<div class="flex flex-col mb-1">
-					<label class="block mb-2 text-md font-medium text-gray-900">
-						¿Qué tanto viajas en avión? (por año)
-					</label>
-					<div class="flex flex-col gap-3 md:flex-row md:text-nowrap">
-						<label
-							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
-						>
-							<input
-								type="radio"
-								name="avion"
-								value="no-viajo"
-								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
-								checked
-							/>
-							No viajo en avión
-						</label>
-
-						<label
-							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
-						>
-							<input
-								type="radio"
-								name="avion"
-								value="poco"
-								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
-							/>
-							500 - 1000 km
-						</label>
-						<label
-							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
-						>
-							<input
-								type="radio"
-								name="avion"
-								value="medio"
-								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
-							/>
-							1000 - 2500 km
-						</label>
-						<label
-							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
-						>
-							<input
-								type="radio"
-								name="avion"
-								value="alto"
-								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
-							/>
-							2500 - 5000 km
-						</label>
-					</div>
-				</div>
-
-				<button
-					class="w-full px-4 py-2 mt-4 text-md text-center text-white transition-all border border-transparent rounded-md shadow-md bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-					type="submit"
-					name="boton-submit"
+				<form
+					class="flex flex-col max-w-screen-lg gap-5 mt-8 mb-2 w-80 sm:w-96"
+					id="formulario-transporte"
 				>
-					Enviar datos
-				</button>
-			</form>
-		</section>
-		<section
-			class="relative flex flex-col items-center  p-16 rounded-xl bg-primary"
-		>
-			<div>
-				<h3 class="block text-3xl font-bold text-center text-slate-800">Consumo</h3>
-				<p class="font-semibold text-slate-800">
-					Rellene los campos para poder calcular las emisiones en base a su
-					consumo.
-				</p>
-			</div>
+					<div class="flex flex-col gap-6 mb-1">
+						<div class="w-full max-w-sm min-w-[200px]">
+							<label class="block mb-2 text-md font-medium text-gray-900">
+								¿Cuántos kilómetros haces en auto por dia?
+							</label>
+							<input
+								type="number"
+								min="0"
+								value="0"
+								required
+								class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-green-400 hover:border-green-800 focus:shadow"
+								placeholder="Ej: 100"
+								name="cantidad-km-auto"
+							/>
+						</div>
+					</div>
 
-			<form
-				class="flex flex-col max-w-screen-lg gap-5 mt-8 mb-2 w-80 sm:w-96"
-				id="formulario-consumo"
+					<div class="flex flex-col mb-1">
+						<label
+							for="countries"
+							class="block mb-2 text-md font-medium text-gray-900"
+						>
+							Seleccione una opción
+						</label>
+						<select
+							id="countries"
+							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-green-400 hover:border-green-300 focus:shadow"
+							name="tipo-de-combustible"
+						>
+							<option selected disabled>Seleccionar Tipo de Combustible</option>
+							<option value="nafta">Nafta</option>
+							<option value="gnc">Gas Natural Comprimido (GNC)</option>
+							<option value="diesel">Diésel</option>
+							<option value="electrico">Eléctrico</option>
+						</select>
+					</div>
+
+					<div class="flex flex-col gap-6 mb-1">
+						<div class="w-full max-w-sm min-w-[200px]">
+							<label class="block mb-2 text-md font-medium text-gray-900">
+								¿Cuántos kilómetros recorres en colectivo al día?
+							</label>
+							<input
+								type="number"
+								min="0"
+								value="0"
+								required
+								name="cantidad-km-colectivo"
+								class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-green-400 hover:border-green-300 focus:shadow"
+								placeholder="Ej: 20"
+							/>
+						</div>
+					</div>
+
+					<div class="flex flex-col gap-6 mb-1">
+						<div class="w-full max-w-sm min-w-[200px]">
+							<label class="block mb-2 text-md font-medium text-gray-900">
+								¿Cuántos kilómetros recorres en bicicleta al día?
+							</label>
+							<input
+								type="number"
+								min="0"
+								value="0"
+								required
+								class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-green-400 hover:border-green-300 focus:shadow"
+								placeholder="Ej: 5"
+								name="cantidad-km-bicleta"
+							/>
+						</div>
+					</div>
+
+					<div class="flex flex-col mb-1">
+						<label class="block mb-2 text-md font-medium text-gray-900">
+							¿Qué tanto viajas en avión? (por año)
+						</label>
+						<div class="flex flex-col gap-3 md:flex-row md:text-nowrap">
+							<label
+								class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+							>
+								<input
+									type="radio"
+									name="avion"
+									value="no-viajo"
+									class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+									checked
+								/>
+								No viajo en avión
+							</label>
+
+							<label
+								class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+							>
+								<input
+									type="radio"
+									name="avion"
+									value="poco"
+									class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+								/>
+								500 - 1000 km
+							</label>
+							<label
+								class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+							>
+								<input
+									type="radio"
+									name="avion"
+									value="medio"
+									class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+								/>
+								1000 - 2500 km
+							</label>
+							<label
+								class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+							>
+								<input
+									type="radio"
+									name="avion"
+									value="alto"
+									class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+								/>
+								2500 - 5000 km
+							</label>
+						</div>
+					</div>
+
+					<button
+						class="w-full px-4 py-2 mt-4 text-md text-center text-white transition-all border border-transparent rounded-md shadow-md bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+						type="submit"
+						name="boton-submit"
+					>
+						Enviar datos
+					</button>
+				</form>
+			</section>
+			<section
+				class="relative flex flex-col items-center p-16 rounded-xl bg-primary"
 			>
-				<div class="flex flex-col gap-6 mb-1">
-					<div class="w-full max-w-sm min-w-[200px]">
-						<label class="block mb-2 text-md font-medium text-gray-900">
-							¿Cuánto gastas mensualmente en ropa y productos? (en $)
-						</label>
-						<input
-							type="number"
-							min="0"
-							value="0"
-							required
-							name="gasto-ropa"
-							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-							placeholder="Ej: 15000"
-						/>
-					</div>
+				<div>
+					<h3 class="block text-3xl font-bold text-center text-slate-800">
+						Consumo
+					</h3>
+					<p class="font-semibold text-slate-800">
+						Rellene los campos para poder calcular las emisiones en base a su
+						consumo.
+					</p>
 				</div>
 
-				<!-- Pregunta 2 -->
-				<div class="flex flex-col mb-1">
-					<label class="block mb-2 text-md font-medium text-gray-900">
-						¿Adquieres productos de segunda mano? (Frecuencia)
-					</label>
-					<select
-						name="segunda-mano"
-						class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-					>
-						<option selected>Selecciona una opción</option>
-						<option value="nunca">Nunca</option>
-						<option value="a-veces">A veces</option>
-						<option value="frecuentemente">Frecuentemente</option>
-						<option value="siempre">Siempre</option>
-					</select>
-				</div>
-
-				<div class="flex flex-col mb-1">
-					<label class="block mb-2 text-md font-medium text-gray-900">
-						¿Reciclas?
-					</label>
-					<div class="flex flex-col gap-3 md:flex-row">
-						<label
-							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
-						>
-							<input
-								type="radio"
-								name="recicla"
-								value="si"
-								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
-							/>
-							Sí
-						</label>
-						<label
-							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
-						>
-							<input
-								type="radio"
-								name="recicla"
-								value="no"
-								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
-							/>
-							No
-						</label>
-						<label
-							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
-						>
-							<input
-								type="radio"
-								name="recicla"
-								value="parcialmente"
-								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
-							/>
-							Parcialmente
-						</label>
-					</div>
-				</div>
-
-				<div class="flex flex-col gap-6 mb-1">
-					<div class="w-full max-w-sm min-w-[200px]">
-						<label class="block mb-2 text-md font-medium text-gray-900">
-							¿Cuántos dispositivos electrónicos posees?
-						</label>
-						<input
-							type="number"
-							min="0"
-							value="0"
-							required
-							name="cantidad-dispositivos"
-							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-							placeholder="Ej: 4"
-						/>
-					</div>
-				</div>
-
-				<button
-					class="w-full px-4 py-2 mt-4 text-xl text-center text-white transition-all border border-transparent rounded-md shadow-md bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-					type="submit"
-					id="botonDatosConsumo"
+				<form
+					class="flex flex-col max-w-screen-lg gap-5 mt-8 mb-2 w-80 sm:w-96"
+					id="formulario-consumo"
 				>
-					Enviar datos
-				</button>
-			</form>
-		</section>
-		<section
-			class="relative flex flex-col items-center  p-16 rounded-xl bg-primary"
-		>
-			<div>
-				<h3 class="block text-3xl font-bold text-center text-slate-800">Vivienda</h3>
-				<p class="font-semibold text-slate-800">
-					Rellene los campos para pode	r calcular las emisiones en base al
-					consumo dentro de su vivienda.
-				</p>
-			</div>
+					<div class="flex flex-col gap-6 mb-1">
+						<div class="w-full max-w-sm min-w-[200px]">
+							<label class="block mb-2 text-md font-medium text-gray-900">
+								¿Cuánto gastas mensualmente en ropa y productos? (en $)
+							</label>
+							<input
+								type="number"
+								min="0"
+								value="0"
+								required
+								name="gasto-ropa"
+								class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+								placeholder="Ej: 15000"
+							/>
+						</div>
+					</div>
 
-			<form
-				class="flex flex-col max-w-screen-lg gap-5 mt-8 mb-2 w-80 sm:w-96"
-				id="formulario-vivienda"
+					<!-- Pregunta 2 -->
+					<div class="flex flex-col mb-1">
+						<label class="block mb-2 text-md font-medium text-gray-900">
+							¿Adquieres productos de segunda mano? (Frecuencia)
+						</label>
+						<select
+							name="segunda-mano"
+							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+						>
+							<option selected>Selecciona una opción</option>
+							<option value="nunca">Nunca</option>
+							<option value="a-veces">A veces</option>
+							<option value="frecuentemente">Frecuentemente</option>
+							<option value="siempre">Siempre</option>
+						</select>
+					</div>
+
+					<div class="flex flex-col mb-1">
+						<label class="block mb-2 text-md font-medium text-gray-900">
+							¿Reciclas?
+						</label>
+						<div class="flex flex-col gap-3 md:flex-row">
+							<label
+								class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+							>
+								<input
+									type="radio"
+									name="recicla"
+									value="si"
+									class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+								/>
+								Sí
+							</label>
+							<label
+								class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+							>
+								<input
+									type="radio"
+									name="recicla"
+									value="no"
+									class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+								/>
+								No
+							</label>
+							<label
+								class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+							>
+								<input
+									type="radio"
+									name="recicla"
+									value="parcialmente"
+									class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+								/>
+								Parcialmente
+							</label>
+						</div>
+					</div>
+
+					<div class="flex flex-col gap-6 mb-1">
+						<div class="w-full max-w-sm min-w-[200px]">
+							<label class="block mb-2 text-md font-medium text-gray-900">
+								¿Cuántos dispositivos electrónicos posees?
+							</label>
+							<input
+								type="number"
+								min="0"
+								value="0"
+								required
+								name="cantidad-dispositivos"
+								class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+								placeholder="Ej: 4"
+							/>
+						</div>
+					</div>
+
+					<button
+						class="w-full px-4 py-2 mt-4 text-md text-center text-white transition-all border border-transparent rounded-md shadow-md bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+						type="submit"
+						name="boton-submit"
+					>
+						Enviar datos
+					</button>
+				</form>
+			</section>
+			<section
+				class="relative flex flex-col items-center p-16 rounded-xl bg-primary"
 			>
-				<div class="flex flex-col gap-6 mb-1">
-					<div class="w-full max-w-sm min-w-[200px]">
-						<label class="block mb-2 text-md font-medium text-gray-900">
-							¿Cuál es tu consumo eléctrico mensual? (kWh)
-						</label>
-						<input
-							type="number"
-							min="0"
-							value="0"
-							required
-							name="consumo-electrico"
-							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-							placeholder="Ej: 250"
-						/>
-					</div>
+				<div>
+					<h3 class="block text-3xl font-bold text-center text-slate-800">
+						Vivienda
+					</h3>
+					<p class="font-semibold text-slate-800">
+						Rellene los campos para pode r calcular las emisiones en base al
+						consumo dentro de su vivienda.
+					</p>
 				</div>
 
-				<div class="flex flex-col mb-1">
-					<label class="block mb-2 text-md font-medium text-gray-900">
-						¿Qué tipo de energía utilizas?
-					</label>
-					<select
-						name="tipo-energia"
-						class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-					>
-						<option selected disabled>Selecciona una opción</option>
-						<option value="renovable">Renovable</option>
-						<option value="mixta">Mixta</option>
-						<option value="convencional">Convencional</option>
-					</select>
-				</div>
-
-				<div class="flex flex-col gap-6 mb-1">
-					<div class="w-full max-w-sm min-w-[200px]">
-						<label class="block mb-2 text-md font-medium text-gray-900">
-							¿Cuál es tu consumo de gas natural? (m³/mes)
-						</label>
-						<input
-							type="number"
-							min="0"
-							value="0"
-							required
-							name="consumo-gas"
-							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-							placeholder="Ej: 50"
-						/>
-					</div>
-				</div>
-
-				<button
-					class="w-full px-4 py-2 mt-4 text-md text-center text-white transition-all border border-transparent rounded-md shadow-md bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-					type="submit"
-					id="botonDatosVivienda"
+				<form
+					class="flex flex-col max-w-screen-lg gap-5 mt-8 mb-2 w-80 sm:w-96"
+					id="formulario-vivienda"
 				>
-					Enviar datos
-				</button>
-			</form>
-		</section>
-		<section
-			class="relative flex flex-col items-center justify-center p-16 rounded-xl bg-primary"
-		>
-			<div>
-				<h3 class="block text-3xl font-bold text-center text-slate-800">Alimentacion</h3>
-				<p class="font-semibold text-slate-800">
-					Rellene los campos para poder calcular las emisiones en base al
-					consumo dentro de su vivienda.
-				</p>
-			</div>
-			<form
-				class="flex flex-col max-w-screen-lg gap-5 mt-8 mb-2 w-80 sm:w-96"
-				id="formulario-alimentacion"
+					<div class="flex flex-col gap-6 mb-1">
+						<div class="w-full max-w-sm min-w-[200px]">
+							<label class="block mb-2 text-md font-medium text-gray-900">
+								¿Cuál es tu consumo eléctrico mensual? (kWh)
+							</label>
+							<input
+								type="number"
+								min="0"
+								value="0"
+								required
+								name="consumo-electrico"
+								class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+								placeholder="Ej: 250"
+							/>
+						</div>
+					</div>
+
+					<div class="flex flex-col mb-1">
+						<label class="block mb-2 text-md font-medium text-gray-900">
+							¿Qué tipo de energía utilizas?
+						</label>
+						<select
+							name="tipo-energia"
+							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+						>
+							<option selected disabled>Selecciona una opción</option>
+							<option value="renovable">Renovable</option>
+							<option value="mixta">Mixta</option>
+							<option value="convencional">Convencional</option>
+						</select>
+					</div>
+
+					<div class="flex flex-col gap-6 mb-1">
+						<div class="w-full max-w-sm min-w-[200px]">
+							<label class="block mb-2 text-md font-medium text-gray-900">
+								¿Cuál es tu consumo de gas natural? (m³/mes)
+							</label>
+							<input
+								type="number"
+								min="0"
+								value="0"
+								required
+								name="consumo-gas"
+								class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+								placeholder="Ej: 50"
+							/>
+						</div>
+					</div>
+
+					<button
+						class="w-full px-4 py-2 mt-4 text-md text-center text-white transition-all border border-transparent rounded-md shadow-md bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+						type="submit"
+						name="boton-submit"
+					>
+						Enviar datos
+					</button>
+				</form>
+			</section>
+			<section
+				class="relative flex flex-col items-center justify-center p-16 rounded-xl bg-primary"
 			>
-				<div class="flex flex-col mb-1">
-					<label class="block mb-2 text-md font-medium text-gray-900">
-						¿Qué porcentaje de tu dieta es de origen animal?
-					</label>
-					<select
-						name="dieta-animal"
-						class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-					>
-						<option selected disabled>Selecciona una opción</option>
-						<option value="alto">Alto</option>
-						<option value="medio">Medio</option>
-						<option value="bajo">Bajo</option>
-					</select>
+				<div>
+					<h3 class="block text-3xl font-bold text-center text-slate-800">
+						Alimentacion
+					</h3>
+					<p class="font-semibold text-slate-800">
+						Rellene los campos para poder calcular las emisiones en base al
+						consumo dentro de su vivienda.
+					</p>
 				</div>
-
-				<div class="flex flex-col mb-1">
-					<label class="block mb-2 text-md font-medium text-gray-900">
-						¿Consumes alimentos locales y de temporada?
-					</label>
-					<div class="flex flex-col gap-3 md:flex-row">
-						<label
-							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
-						>
-							<input
-								type="radio"
-								name="alimentos-locales"
-								value="si"
-								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
-							/>
-							Sí
-						</label>
-						<label
-							class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
-						>
-							<input
-								type="radio"
-								name="alimentos-locales"
-								value="no"
-								class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
-							/>
-							No
-						</label>
-					</div>
-				</div>
-
-				<div class="flex flex-col gap-6 mb-1">
-					<div class="w-full max-w-sm min-w-[200px]">
-						<label class="block mb-2 text-md font-medium text-gray-900">
-							¿Cuánto gastas semanalmente en alimentación? (en $)
-						</label>
-						<input
-							type="number"
-							min="0"
-							value="0"
-							required
-							name="gasto-alimentacion"
-							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-							placeholder="Ej: 8000"
-						/>
-					</div>
-				</div>
-
-				<div class="flex flex-col gap-6 mb-1">
-					<div class="w-full max-w-sm min-w-[200px]">
-						<label class="block mb-2 text-md font-medium text-gray-900">
-							¿Cuántas comidas contienen carne o pescado a la semana?
-						</label>
-						<input
-							type="number"
-							min="0"
-							value="0"
-							required
-							name="comidas-carne"
-							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-							placeholder="Ej: 7"
-						/>
-					</div>
-				</div>
-
-				<button
-					class="w-full px-4 py-2 mt-4 text-md text-center text-white transition-all border border-transparent rounded-md shadow-md bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-					type="submit"
-					id="botonDatosAlimentacion"
+				<form
+					class="flex flex-col max-w-screen-lg gap-5 mt-8 mb-2 w-80 sm:w-96"
+					id="formulario-alimentacion"
 				>
-					Enviar datos
-				</button>
-			</form>
-		</section>
-	</div>	
+					<div class="flex flex-col mb-1">
+						<label class="block mb-2 text-md font-medium text-gray-900">
+							¿Qué porcentaje de tu dieta es de origen animal?
+						</label>
+						<select
+							name="dieta-animal"
+							class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm text-slate-700 border-slate-200 placeholder:text-slate-400 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+						>
+							<option selected disabled>Selecciona una opción</option>
+							<option value="alto">Alto</option>
+							<option value="medio">Medio</option>
+							<option value="bajo">Bajo</option>
+						</select>
+					</div>
 
-	<section id="resultadoFinal" class="flex flex-col justify-center items-center py-10 bg-green-950	">
+					<div class="flex flex-col mb-1">
+						<label class="block mb-2 text-md font-medium text-gray-900">
+							¿Consumes alimentos locales y de temporada?
+						</label>
+						<div class="flex flex-col gap-3 md:flex-row">
+							<label
+								class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+							>
+								<input
+									type="radio"
+									name="alimentos-locales"
+									value="si"
+									class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+								/>
+								Sí
+							</label>
+							<label
+								class="flex items-center gap-2 text-sm cursor-pointer text-slate-700"
+							>
+								<input
+									type="radio"
+									name="alimentos-locales"
+									value="no"
+									class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-400"
+								/>
+								No
+							</label>
+						</div>
+					</div>
 
-		<div class="flex flex-col items-center justify-center py-5">
-			<h1 class=" text-3xl text-center font-semibold md:text-6xl text-gray-500">Tu huella de carbono es</h1>
-			<h2 class=" text-4xl text-center py-10 font-semibold md:text-6xl text-gray-500">0</h2>
+					<div class="flex flex-col gap-6 mb-1">
+						<div class="w-full max-w-sm min-w-[200px]">
+							<label class="block mb-2 text-md font-medium text-gray-900">
+								¿Cuánto gastas semanalmente en alimentación? (en $)
+							</label>
+							<input
+								type="number"
+								min="0"
+								value="0"
+								required
+								name="gasto-alimentacion"
+								class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+								placeholder="Ej: 8000"
+							/>
+						</div>
+					</div>
+
+					<div class="flex flex-col gap-6 mb-1">
+						<div class="w-full max-w-sm min-w-[200px]">
+							<label class="block mb-2 text-md font-medium text-gray-900">
+								¿Cuántas comidas contienen carne o pescado a la semana?
+							</label>
+							<input
+								type="number"
+								min="0"
+								value="0"
+								required
+								name="comidas-carne"
+								class="w-full px-3 py-2 text-sm transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+								placeholder="Ej: 7"
+							/>
+						</div>
+					</div>
+
+					<button
+						class="w-full px-4 py-2 mt-4 text-md text-center text-white transition-all border border-transparent rounded-md shadow-md bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+						type="submit"
+						name="boton-submit"
+					>
+						Enviar datos
+					</button>
+				</form>
+			</section>
 		</div>
 
-		<div class="flex flex-col items-center justify-center py-5">
-			<h1 class="text-2xl text-center font-semibold md:text-5xl text-gray-500">resultados finales que se tomaron en cuenta</h1>
-			<div class="flex flex-col items-center justify-center py-5 md:flex-row md:gap-20">
-				<div class="flex flex-col items-center justify-center py-5">
-					<p class="text-2xl text-center font-semibold md:text-5xl text-gray-500">Transporte</p>
-					<p class="text-2xl text-center font-semibold md:text-5xl py-5 text-gray-500">0</p>
-				</div>
-				<div class="flex flex-col items-center justify-center py-5">
-					<p class="text-2xl text-center font-semibold md:text-5xl text-gray-500">Consumo</p>
-					<p class="text-2xl text-center font-semibold md:text-5xl py-5 text-gray-500">0</p>
-				</div>
-				<div class="flex flex-col items-center justify-center py-5">
-					<p class="text-2xl text-center font-semibold md:text-5xl text-gray-500">Vivienda</p>
-					<p class="text-2xl text-center font-semibold md:text-5xl py-5 text-gray-500">0</p>
-				</div>
-				<div class="flex flex-col items-center justify-center py-5">
-					<p class="text-2xl text-center font-semibold md:text-5xl text-gray-500">Alimentacion</p>
-					<p class="text-2xl text-center font-semibold md:text-5xl py-5 text-gray-500">0</p>
+		<section
+			id="resultadoFinal"
+			class="flex flex-col justify-center items-center py-10 bg-green-950"
+		>
+			<div class="flex flex-col items-center justify-center py-5">
+				<h1
+					class="text-3xl text-center font-semibold md:text-6xl text-gray-500"
+				>
+					Tu huella de carbono es
+				</h1>
+				<h2
+					class="text-4xl text-center py-10 font-semibold md:text-6xl text-gray-500"
+					id="total-emisiones"
+				>
+					0
+				</h2>
+			</div>
+
+			<div class="flex flex-col items-center justify-center py-5">
+				<h1
+					class="text-2xl text-center font-semibold md:text-5xl text-gray-500"
+				>
+					resultados finales que se tomaron en cuenta
+				</h1>
+				<div
+					class="flex flex-col items-center justify-center py-5 md:flex-row md:gap-20"
+				>
+					<div class="flex flex-col items-center justify-center py-5">
+						<p
+							class="text-2xl text-center font-semibold md:text-5xl text-gray-500"
+						>
+							Transporte
+						</p>
+						<p
+							class="text-2xl text-center font-semibold md:text-5xl py-5 text-gray-500"
+						>
+							0
+						</p>
+					</div>
+					<div class="flex flex-col items-center justify-center py-5">
+						<p
+							class="text-2xl text-center font-semibold md:text-5xl text-gray-500"
+						>
+							Consumo
+						</p>
+						<p
+							class="text-2xl text-center font-semibold md:text-5xl py-5 text-gray-500"
+						>
+							0
+						</p>
+					</div>
+					<div class="flex flex-col items-center justify-center py-5">
+						<p
+							class="text-2xl text-center font-semibold md:text-5xl text-gray-500"
+						>
+							Vivienda
+						</p>
+						<p
+							class="text-2xl text-center font-semibold md:text-5xl py-5 text-gray-500"
+						>
+							0
+						</p>
+					</div>
+					<div class="flex flex-col items-center justify-center py-5">
+						<p
+							class="text-2xl text-center font-semibold md:text-5xl text-gray-500"
+						>
+							Alimentacion
+						</p>
+						<p
+							class="text-2xl text-center font-semibold md:text-5xl py-5 text-gray-500"
+						>
+							0
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
-
-
-	</section>
-
+		</section>
 	</body>
 </html>
