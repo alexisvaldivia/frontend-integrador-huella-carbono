@@ -77,9 +77,10 @@ Este Proyecto es una herramienta web simple para poder calcular el total de gase
 
 ## Estas son algunas imagenes de nuestra Calculadora
 
-![Captura de pantalla vista mobile](assets/captura-mobile.jpg)
-![Captura de pantalla vista PC](assets/captura-pc.jpg)
-![Captura de pantalla vista del Formulario](assets/captura-vista-formulario.jpg)
+![Captura de pantalla vista mobile](assets/mobile-captura.jpg)
+![Captura de pantalla vista del Formulario mobile](assets/mobile-captura-formulario.jpg)
+![Captura de pantalla vista PC](assets/pc-captura.jpg)
+![Captura de pantalla vista del Formulario](assets/pc-captura-formulario.jpg)
 
 ---
 
