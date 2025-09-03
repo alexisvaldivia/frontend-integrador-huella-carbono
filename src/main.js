@@ -332,4 +332,21 @@ addEventListener('DOMContentLoaded', () => {
         console.log(respuestasAlimentacion, total);
         console.log(totalEmisiones.toFixed(2))
     });
+
+
+
+
+
+
+
+
+
+
+
+    //Lo que hace funcionar a la paginacion del formulario
+    var swiper = new Swiper(".mySwiper", {
+      pagination: {
+        el: ".swiper-pagination",
+      },
+    });
 });
