@@ -339,7 +339,6 @@ addEventListener('DOMContentLoaded', () => {
 
         let total = calcularAlimentacion();
         let botonSubmit = formularioAlimentacion.elements['boton-submit'];
-        cambiarTextoBoton(botonSubmit);
 
         console.log(respuestasAlimentacion, total);
         console.log(totalEmisiones.toFixed(2))
