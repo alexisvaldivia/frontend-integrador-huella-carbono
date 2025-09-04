@@ -10,6 +10,13 @@ addEventListener('DOMContentLoaded', () => {
     const formularioVivienda = $('formulario-vivienda');
     const formularioAlimentacion = $('formulario-alimentacion');
 
+
+    //esto nos va servir para hacer paginacion en el formulario
+    const formTransporte = $('form-transporte');
+    const formConsumo = $('form-consumo');
+    const formVivienda = $('form-vivienda');
+    const formAlimentacion = $('form-alimentacion')
+
     let totalEmisiones = 0;
 
     const viajesAvion = {
@@ -222,9 +229,13 @@ addEventListener('DOMContentLoaded', () => {
             return;
         } else {
             let botonSubmit = formularioTransporte.elements['boton-submit'];
-            cambiarTextoBoton(botonSubmit)
+          
             let totalTransporte = $('resultado-transporte')
             totalTransporte.textContent = calcularTransporte();
+
+            //cambia al siguente formulario
+            formTransporte.classList.toggle("display-none");
+            formConsumo.classList.toggle("display-none")
         }
 
         let totalTransporte = calcularTransporte();
@@ -257,9 +268,14 @@ addEventListener('DOMContentLoaded', () => {
 
         let total = calcularConsumo();
         let botonSubmit = formularioConsumo.elements['boton-submit'];
-        cambiarTextoBoton(botonSubmit);
+        
+        
         let totalConsumo = $('resultado-consumo')
         totalConsumo.textContent = calcularConsumo();
+        //cambia al siguente formulario
+        formConsumo.classList.toggle("display-none");
+        formVivienda.classList.toggle("display-none")
+
         console.log(respuestasConsumo, total);
     });
 
@@ -278,7 +294,7 @@ addEventListener('DOMContentLoaded', () => {
         if (respuestasVivienda.tipoEnergia !== 'Selecciona una opción') {
             let total = calcularVivienda();
             let botonSubmit = formularioVivienda.elements['boton-submit'];
-            cambiarTextoBoton(botonSubmit);
+           
             console.log(respuestasVivienda, total);
         } else {
             alert('Debe seleccionar un tipo de energia');
@@ -286,9 +302,11 @@ addEventListener('DOMContentLoaded', () => {
         }
 
         let botonSubmit = formularioConsumo.elements['boton-submit'];
-        cambiarTextoBoton(botonSubmit);
         let totalvivienda = $('resultado-vivienda')
         totalvivienda.textContent = calcularVivienda();
+        //cambia al siguente formulario
+        formVivienda.classList.toggle("display-none");
+        formAlimentacion.classList.toggle("display-none")
         
     });
 
@@ -333,12 +351,5 @@ addEventListener('DOMContentLoaded', () => {
         toralAlimentencion.textContent = calcularAlimentacion();
     });
 
-    //swiper
-
-    var swiper = new Swiper(".mySwiper", {
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
+    
 });
