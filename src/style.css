@@ -34,3 +34,8 @@ header {
 .bg-primary{
 	background: var(--var-primary);
 }
+
+
+.display-none{
+	display: none;
+}
