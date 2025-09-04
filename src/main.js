@@ -223,6 +223,8 @@ addEventListener('DOMContentLoaded', () => {
         } else {
             let botonSubmit = formularioTransporte.elements['boton-submit'];
             cambiarTextoBoton(botonSubmit)
+            let totalTransporte = $('resultado-transporte')
+            totalTransporte.textContent = calcularTransporte();
         }
 
         let totalTransporte = calcularTransporte();
@@ -256,6 +258,8 @@ addEventListener('DOMContentLoaded', () => {
         let total = calcularConsumo();
         let botonSubmit = formularioConsumo.elements['boton-submit'];
         cambiarTextoBoton(botonSubmit);
+        let totalConsumo = $('resultado-consumo')
+        totalConsumo.textContent = calcularConsumo();
         console.log(respuestasConsumo, total);
     });
 
@@ -283,6 +287,9 @@ addEventListener('DOMContentLoaded', () => {
 
         let botonSubmit = formularioConsumo.elements['boton-submit'];
         cambiarTextoBoton(botonSubmit);
+        let totalvivienda = $('resultado-vivienda')
+        totalvivienda.textContent = calcularVivienda();
+        
     });
 
     formularioAlimentacion.addEventListener('submit', (e) => {
@@ -315,12 +322,15 @@ addEventListener('DOMContentLoaded', () => {
         let total = calcularAlimentacion();
         let botonSubmit = formularioAlimentacion.elements['boton-submit'];
         cambiarTextoBoton(botonSubmit);
+
         console.log(respuestasAlimentacion, total);
         console.log(totalEmisiones.toFixed(2))
 
         let totalEmisionesHTML = $('total-emisiones');
+        let toralAlimentencion = $('resultado-alimentacion')
 
         totalEmisionesHTML.textContent = totalEmisiones.toFixed(2);
+        toralAlimentencion.textContent = calcularAlimentacion();
     });
 
     //swiper
